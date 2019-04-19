@@ -39,7 +39,36 @@ console.log(seconds);
 // first we need to turn it into something that is base 100. like 1-360, full circle not 1-100 
 // this will make life easier to convert to degrees 
 // at 0 its going to be 0degrees 
-// at 100% its going to be 360degrees
+// at 100% its going to be 360degrees becasue a circle is 360 degrees and not 60 or 100.
+
+//  So this is how we convert to degrees one degee = 60mins = 3600sec
+// seconds/ 60  gives us the pecenage that we have then multple that 
+const secondsDegrees = ((seconds/ 60 ) * 360 ) + 90;
+// here we are rotatng the hand based on the dynamic degrees that we are generating above
+// to transform is to change
+// we are taking the hand and placing it to the next second and using rotate to do that
+// no need for transition becase sec are next to each other
+secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+//  if we console log we can see that the hand is half way but not saying 60
+// this is because we initally did 90degrees in css to off set that we add 90
+
+// for min and hour its the same
+const mins = now.getMinutes();
+const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
+minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+
+// dividing this by 12 instead of 60 
+const hour = now.getHours();
+const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+hourHand.style.transform = `rotate(${hourDegrees}deg)`;
 }
 
 setInterval(setDate, 1000)
+
+//  lets grab the hands 
+
+const secondHand = document.querySelector('.sec-hand');
+  const minsHand = document.querySelector('.min-hand');
+  const hourHand = document.querySelector('.hour-hand');
