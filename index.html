@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./main.css">
+    <title>JS clock</title>
+</head>
+<body>
+<!-- this is the entire page. class=clock represents the phycial clock and outwards,
+this includes the ouside margin the position of the clock on the page
+the thickness of the clock, the padding around, in and out the page, and the shadow -->
+    <div class="clock"> 
+
+        <!-- this class= clock-inside-circle represents, the inside of the actual circle. 
+        meaning this doesn't include the circle the clock is formed of 
+    neither does it include the padding between the cicle and the hands. The hands are included in here
+so when you set height here, u r setting height on whatever is inside the clock aka the hands-->
+        <div class="clock-inside-circle">
+                <div class="hand hour-hand"></div>
+                <div class="hand min-hand"></div>
+                <div class="hand sec-hand"></div>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>

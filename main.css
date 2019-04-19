@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: goldenrod;
+}
+
+
+.clock {
+    width: 30rem; 
+    height: 30rem;
+    /* this is the width/height of the div that's creating the circle*/
+    border: 20px solid white;
+    /* this is the actual thick line/border of the clock */
+    border-radius: 50%;
+    margin: 50px auto;
+    /* this is directly ouside the border of the line making the clock */
+    position: relative;
+    padding: 2rem;
+    /* this padding is the padding inside the clock and the hands.
+    this is the space that is created for room for the end of the hands
+    so the hands don't touch the border */
+    box-shadow:
+      0 0 0 4px rgba(0,0,0,0.1),
+      inset 0 0 0 3px #EFEFEF,
+      inset 0 0 10px black,
+      0 0 10px rgba(0,0,0,0.2);
+      
+    }
+
+  .clock-inside-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* this width/height is used for whatever is inside the border of the clock
+    this height/width scope is realtive to the clock 
+    determines the h/w of whatever is in the clock */
+    transform: translateY(-3px); /* account for the height of the clock hands */
+  } 
+
+  .hand {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    /* initially the hand divs are all stacked up on eachother
+    becasue of how the html is written */
+    /* what we are trying to do is to apply our rotate to each of the hand
+    depending on what time it is  */
+    /* we can do that by transform rotating it and it rotates depending on the degree we give it.
+     the problem is that by default
+   it is going to rotate itself in the exact middle of the element of itself. 
+ */
+ /* So before we rotate it we need to fix where we want the roation to start,
+ which is the end of the div not middle */
+ /* we want to rotate it at the very end of the right hand side */
+ /* so we are going to transform the origin. The origin is where it is going to do 
+ the rotating. So we are changing the postion of where it starts rotating from
+ by default it is 50%, aka the middle of itself. 
+ 100% on the x axis will put that pivot point on the right hand side. this 100% gives us the
+ advantage to start rotating on the very right on the div */
+ transform-origin: 100%;
+ /* the other problem is divs are block and they are left to right, it is not starting at 12oclock. */
+ /* we can fix that by rotating is manually 90degs */
+ /* transform is to change one thing to another */
+ transform: rotate(90deg);
+
+ /* So now we can change the degrees and the hand moves, but it moves abruplty, we want it to have a smooth 
+ transition, so we use transition property */ 
+ /* transitions is move from one place to another and this give smooth moves */
+ transition: all 0.05s;
+/* this gives you the ticking back forth movement on clocks, u can do ease-in-out */
+/* more on transitions:  https://thoughtbot.com/blog/transitions-and-transforms */
+ transition-timing-function: cubic-bezier(0, 2.69, 0.3, 1.98)
+}
+
+/* now lets do JS */
